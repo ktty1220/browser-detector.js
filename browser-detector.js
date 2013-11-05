@@ -4,10 +4,11 @@
   * http://w3g.jp/blog/tools/js_browser_sniffing
   */
   var _ua = (function(){
+    var undef = 'undefined';
     return {
-      ltIE6:typeof window.addEventListener == "undefined" && typeof document.documentElement.style.maxHeight == "undefined",
-      ltIE7:typeof window.addEventListener == "undefined" && typeof document.querySelectorAll == "undefined",
-      ltIE8:typeof window.addEventListener == "undefined" && typeof document.getElementsByClassName == "undefined",
+      ltIE6:typeof window.addEventListener == undef && typeof document.documentElement.style.maxHeight == undef,
+      ltIE7:typeof window.addEventListener == undef && typeof document.querySelectorAll == undef,
+      ltIE8:typeof window.addEventListener == undef && typeof document.getElementsByClassName == undef,
       ltIE9:document.uniqueID && !window.matchMedia,
       gtIE10:document.uniqueID && document.documentMode >= 10,
       Trident:document.uniqueID,
@@ -15,9 +16,9 @@
       Presto:window.opera,
       Blink:window.chrome,
       Webkit:!window.chrome && typeof document.webkitIsFullScreen != undefined,
-      Touch:typeof document.ontouchstart != "undefined",
-      Mobile:typeof window.orientation != "undefined"
-    }
+      Touch:typeof document.ontouchstart != undef,
+      Mobile:typeof window.orientation != undef
+    };
   })();
 
   // <html>タグの現在のclassを取得
@@ -41,7 +42,7 @@
     }
     else if (_ua.ltIE7) { _ie = 7; }
     else if (_ua.ltIE8) { _ie = 8; }
-    else if (_ua.ltIE9) { _ie = 9; } 
+    else if (_ua.ltIE9) { _ie = 9; }
     else if (_ua.gtIE10) { _ie = document.documentMode; }
     if (_ie > 0) { htmlClass += ' ie' + _ie; }
 
@@ -52,7 +53,7 @@
   }
   else if (_ua.Gecko)  { htmlClass += ' gecko firefox'; }
   else if (_ua.Blink)  { htmlClass += ' blink chrome';  } // 新Operaはこちら
-  else if (_ua.Presto) { htmlClass += ' presto opera'   } // このOperaは古いOpera
+  else if (_ua.Presto) { htmlClass += ' presto opera';  } // このOperaは古いOpera
   else if (_ua.Webkit) { htmlClass += ' webkit safari'; }
 
   if (_ua.Mobile) { htmlClass += ' mobile'; } // スマホやタブレットなど
