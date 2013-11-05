@@ -10,7 +10,7 @@ UserAgentの文字列は参照せずに判定しているので、仮にUserAgen
 
 ## DEMO
 
-[簡単なデモ](https://ktty1220.github.io/browser-detector.js/demo.html)
+[簡単なデモ](http://ktty1220.github.io/browser-detector.js/demo.html)
 
 ## 使用方法
 
