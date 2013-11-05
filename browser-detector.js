@@ -37,8 +37,8 @@
        * http://ajaxian.com/archives/attack-of-the-ie-conditional-comment
        */
       var div = document.createElement('div');
-      div.innerHTML = '<!--[if lt IE 6]><i></i><![endif]-->';
-      if (! div.getElementsByTagName('i')[0]) { _ie = 6; }
+      div.innerHTML = '<!--[if IE 6]><i></i><![endif]-->';
+      if (div.getElementsByTagName('i')[0]) { _ie = 6; }
     }
     else if (_ua.ltIE7) { _ie = 7; }
     else if (_ua.ltIE8) { _ie = 8; }
