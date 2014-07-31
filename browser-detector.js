@@ -4,21 +4,23 @@
   * http://w3g.jp/blog/tools/js_browser_sniffing
   */
   var _ua = (function(){
-    var undef = 'undefined';
     return {
-      ltIE6:typeof window.addEventListener == undef && typeof document.documentElement.style.maxHeight == undef,
-      ltIE7:typeof window.addEventListener == undef && typeof document.querySelectorAll == undef,
-      ltIE8:typeof window.addEventListener == undef && typeof document.getElementsByClassName == undef,
-      ltIE9:document.uniqueID && !window.matchMedia,
-      gtIE10:document.uniqueID && document.documentMode >= 10,
+      ltIE6:typeof window.addEventListener == "undefined" && typeof document.documentElement.style.maxHeight == "undefined",
+      ltIE7:typeof window.addEventListener == "undefined" && typeof document.querySelectorAll == "undefined",
+      ltIE8:typeof window.addEventListener == "undefined" && typeof document.getElementsByClassName == "undefined",
+      ltIE9:document.uniqueID && typeof window.matchMedia == "undefined",
+      gtIE10:document.uniqueID && window.matchMedia,
       Trident:document.uniqueID,
-      Gecko:window.sidebar,
+      Gecko:'MozAppearance' in document.documentElement.style,
       Presto:window.opera,
       Blink:window.chrome,
-      Webkit:!window.chrome && typeof document.webkitIsFullScreen != undefined,
-      Touch:typeof document.ontouchstart != undef,
-      Mobile:typeof window.orientation != undef
-    };
+      Webkit:typeof window.chrome == "undefined" && 'WebkitAppearance' in document.documentElement.style,
+      Touch:typeof document.ontouchstart != "undefined",
+      Mobile:typeof window.orientation != "undefined",
+      ltAd4_4:typeof window.orientation != "undefined" && typeof(EventSource) == "undefined",
+      Pointer:window.navigator.pointerEnabled,
+      MSPoniter:window.navigator.msPointerEnabled
+    }
   })();
 
   // <html>タグの現在のclassを取得
@@ -44,6 +46,8 @@
     else if (_ua.ltIE8) { _ie = 8; }
     else if (_ua.ltIE9) { _ie = 9; }
     else if (_ua.gtIE10) { _ie = document.documentMode; }
+    // var is_ie10 = !!window.navigator.msPointerEnabled;
+    // var is_ie11 = !!window.navigator.pointerEnabled;
     if (_ie > 0) { htmlClass += ' ie' + _ie; }
 
     // IEx以下のクラス作成

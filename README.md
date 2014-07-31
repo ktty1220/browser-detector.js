@@ -95,6 +95,10 @@ GoogleChromeもしくはBlinkエンジンで動作しているブラウザです
 
 ## Changelog
 
+### 0.1.1 (2014-07-31)
+
+* 参考サイトである[JavaScript ユーザエージェント条件分岐便利スニペット](https://w3g.jp/blog/tools/js_browser_sniffing)様が更新されていたのでその内容を反映
+
 ### 0.1.0 (2013-11-05)
 
 * 初版リリース
